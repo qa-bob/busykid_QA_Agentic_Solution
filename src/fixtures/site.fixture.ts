@@ -10,10 +10,12 @@
  */
 
 import { test as base, expect } from '@playwright/test';
-import { loadSiteConfig, type SiteConfig } from '@types/site-config.types';
+import { loadSiteConfig, type SiteConfig } from '@app-types/site-config.types';
 import { HomePage } from '@pages/home.page';
 import { NavigationPage } from '@pages/navigation.page';
 import { ContactFormPage } from '@pages/contact.page';
+import { FeaturesSection } from '@pages/features.page';
+import { CardsPage } from '@pages/cards.page';
 
 // ── Fixture type definitions ─────────────────────────────────────────────────
 
@@ -26,6 +28,10 @@ export interface Fixtures {
   navigationPage: NavigationPage;
   /** ContactFormPage page object (does not auto-navigate) */
   contactPage: ContactFormPage;
+  /** FeaturesSection page object (does not auto-navigate — homepage sections) */
+  featuresSection: FeaturesSection;
+  /** CardsPage page object (does not auto-navigate) */
+  cardsPage: CardsPage;
 }
 
 // ── Extended test object ─────────────────────────────────────────────────────
@@ -66,6 +72,24 @@ export const test = base.extend<Fixtures>({
   contactPage: async ({ page, siteConfig }, use) => {
     const contactPage = new ContactFormPage(page, siteConfig);
     await use(contactPage);
+  },
+
+  /**
+   * featuresSection — constructs FeaturesSection without navigating.
+   * Tests should navigate to the homepage first (the features section is on the homepage).
+   */
+  featuresSection: async ({ page, siteConfig }, use) => {
+    const featuresSection = new FeaturesSection(page, siteConfig);
+    await use(featuresSection);
+  },
+
+  /**
+   * cardsPage — constructs CardsPage without navigating.
+   * Tests should call cardsPage.navigateToCards() to go to /cards.
+   */
+  cardsPage: async ({ page, siteConfig }, use) => {
+    const cardsPage = new CardsPage(page, siteConfig);
+    await use(cardsPage);
   },
 });
 

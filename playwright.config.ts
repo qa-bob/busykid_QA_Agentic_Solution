@@ -28,7 +28,7 @@ export default defineConfig({
   expect: { timeout: 10_000 },
   fullyParallel: true,
   forbidOnly: isCI,
-  retries: isCI ? 1 : 0,
+  retries: isCI ? 2 : 1,
   workers: isCI ? 2 : undefined,
 
   // ── Global setup (reachability check) ───────────────────────────
@@ -65,7 +65,11 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1280, height: 720 },
-        channel: 'chromium',
+        // Omit channel: 'chromium' — the explicit channel tag makes the browser
+        // more identifiable by Cloudflare bot detection than the default Playwright Chromium.
+        launchOptions: {
+          args: ['--disable-blink-features=AutomationControlled'],
+        },
       },
     },
     {

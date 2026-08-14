@@ -1,23 +1,29 @@
-﻿{
-    "name":  "BusyKid",
-    "url":  "https://busykid.com",
-    "description":  "",
-    "industry":  "",
-    "hasContactForm":  true,
-    "expectedNavItems":  [
-
-                         ],
-    "viewports":  [
-                      "desktop",
-                      "mobile",
-                      "tablet"
-                  ],
-    "skipVisual":  false,
-    "skipForms":  false,
-    "auth":  {
-                 "required":  false,
-                 "loginUrl":  "",
-                 "username":  "",
-                 "password":  ""
-             }
+{
+    "name": "BusyKid",
+    "url": "https://busykid.com",
+    "description": "Award-winning app that teaches kids money management through chores, allowance, spending, saving, donating, and investing. Includes BusyKid Visa® Prepaid Card and BusyPay™.",
+    "industry": "FinTech / Family Finance",
+    "hasContactForm": true,
+    "expectedNavItems": [
+        "Features",
+        "Cards",
+        "Investing",
+        "Education",
+        "Press",
+        "Support",
+        "Partners"
+    ],
+    "viewports": [
+        "desktop",
+        "mobile",
+        "tablet"
+    ],
+    "skipVisual": false,
+    "skipForms": false,
+    "auth": {
+        "required": false,
+        "loginUrl": "",
+        "username": "",
+        "password": ""
+    }
 }
