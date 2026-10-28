@@ -121,10 +121,7 @@ test.describe('BusyKid Visa Card Promo on Homepage @functional', () => {
     // Find any link that goes to /cards
     const cardsLink = page.locator('a[href*="/cards"]').first();
 
-    if (await cardsLink.count() === 0) {
-      console.warn('[busypay] No explicit /cards link found on homepage navigation or content area.');
-      return;
-    }
+    test.skip(await cardsLink.count() === 0, 'No explicit /cards link found on homepage navigation or content area');
 
     const href = await cardsLink.getAttribute('href');
     expect(

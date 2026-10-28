@@ -160,7 +160,8 @@ test.describe('BusyKid Cards Page Responsive @functional', () => {
   test('cards page renders without horizontal overflow at mobile @functional', async ({
     page,
     siteConfig,
-  }) => {
+  }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile-chrome', 'Runs only in the "mobile-chrome" project');
     await page.setViewportSize({ width: 390, height: 844 });
     const response = await page.goto(
       siteConfig.url.replace(/\/$/, '') + '/cards',
